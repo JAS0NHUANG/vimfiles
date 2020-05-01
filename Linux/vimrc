@@ -1,0 +1,116 @@
+"感謝Steve Losh 大大這篇文章 (http://stevelosh.com/blog/2010/09/coming-home-to-vim/)讓我多了解了一些vimrc。
+
+"環境設定
+set nocompatible            "be iMproved 取消與vi相容 nocp
+set scrolloff=3             "讓畫面上/下方永遠保有x行 so
+set autoindent              "自動縮排 ai
+set wildmenu                "更強的自動補齊功能 wm
+set backspace=indent,eol,start  "消除鍵設定 bs
+set linebreak               "讓vim不會在字間斷句 lbr
+
+"tab設定
+set tabstop=4               "tab縮排數 ts
+set shiftwidth=4            "設定縮排指令(>或<)字元 sw
+set softtabstop=4           "設定tab鍵為x個空白字元 sts
+set expandtab               "以空白字元取代tab字元 et
+
+"設定編碼
+set encoding=utf8           "設定編碼 enc
+set guifont=Consolas:h13    "設定字型 gfn
+set langmenu=zh_TW.UTF-8    "設定語言 lm
+language message zh_TW.UTF-8
+set helplang=zh             "hlg
+
+"顯示設定
+set number                  "顯示行號 nu
+syntax on                   "語法反白
+set background=light        "底色(亮/暗) bg
+set t_Co=256                "設定顏色為256色
+colorscheme munkeeGriin     "設定色彩配置 colo
+
+filetype plugin indent on
+
+"Folding
+set foldenable
+set foldmethod=indent
+set filetype=html
+set smartindent
+let g:html_indent_inctags = "html,body,head,tbody,div,p,h3"
+
+"Vundle外掛管理
+"Do this to install Vundle:git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+let VundleInstall=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+     let VundleInstall=0
+endif
+
+filetype off                "required!關閉檔案類型外掛
+ 
+set rtp+=~/.vim/bundle/vundle/  "set the runtime path to include Vundle
+call vundle#rc()
+
+"Let vundle manage vundle required!
+Bundle 'gmarik/vundle'
+
+"安裝Bundle
+"emmet-vim
+Bundle 'mattn/emmet-vim'
+let g:user_emmet_expandabbr_key = ',,'
+
+"NERDTree"
+Bundle 'scrooloose/nerdtree'
+
+"airline"
+Bundle 'bling/vim-airline'
+
+"fugitive"
+Bundle 'tpope/vim-fugitive'
+
+"completor"
+Bundle 'maralla/completor.vim'
+
+filetype plugin indent on   "重新開啟檔案類型外掛+設定縮排!
+
+"Always show statusline
+set laststatus=2
+
+Bundle 'gerw/vim-latex-suite'
+" for compiling latex
+ set shellslash
+ set grepprg=grep\ -nH\ $*
+ let g:tex_flavor='latex'
+ let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
+ let g:Tex_CompileRule_dvi = 'pdflatex --interaction=nonstopmode $*'
+
+  let g:Tex_CompileRule_ps = 'dvips -Ppdf -o $*.ps $*.dvi'
+  let g:Tex_CompileRule_pdf = 'ps2pdf $*.ps'
+
+
+"tabular: an align tool
+"(http://vimcasts.org/episodes/aligning-text-with-tabular-vim/)
+Bundle 'godlygeek/tabular'
+
+"makedown force
+autocmd BufNew,BufRead *.md set filetype=markdown
+
+"goyo
+Bundle 'junegunn/goyo.vim'
+
+"ALE Async Lint Engine
+Bundle 'w0rp/ale'
+
+"Indent Guides"
+Bundle 'nathanaelkane/vim-indent-guides'
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_auto_colors = 0
+    hi IndentGuidesOdd  guibg=grey   ctermbg=14
+    hi IndentGuidesEven  guibg=grey   ctermbg=14
+
+"Devicons"
+Bundle 'ryanoasis/vim-devicons'
+
