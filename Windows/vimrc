@@ -1,3 +1,5 @@
+"vimrc file for Windows"
+"Main difference VS Linux: config files under $HOME/vimfiles
 "感謝Steve Losh 大大這篇文章 (http://stevelosh.com/blog/2010/09/coming-home-to-vim/)讓我多了解了一些vimrc。
 
 "環境設定
@@ -38,20 +40,20 @@ set smartindent
 let g:html_indent_inctags = "html,body,head,tbody,div,p,h3"
 
 "Vundle外掛管理
-"Do this to install Vundle:git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"Do this to install Vundle:git clone https://github.com/gmarik/Vundle.vim.git $HOME/vimfiles/bundle/Vundle.vim
 let VundleInstall=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+let vundle_readme=expand('$HOME/vimfiles/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
     echo "Installing Vundle..."
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-     let VundleInstall=0
+    silent !mkdir -p $HOME/vimfiles/bundle
+    silent !git clone https://github.com/gmarik/vundle $HOME/vimfiles/bundle/vundle
+    let VundleInstall=0
 endif
 
 filetype off                "required!關閉檔案類型外掛
  
-set rtp+=~/.vim/bundle/vundle/  "set the runtime path to include Vundle
-call vundle#rc()
+set rtp+=$HOME/vimfiles/bundle/vundle/  "set the runtime path to include Vundle
+call vundle#rc('$HOME/vimfiles/bundle/')
 
 "Let vundle manage vundle required!
 Bundle 'gmarik/vundle'
@@ -116,4 +118,3 @@ Bundle 'nathanaelkane/vim-indent-guides'
 
 "Devicons"
 Bundle 'ryanoasis/vim-devicons'
-
