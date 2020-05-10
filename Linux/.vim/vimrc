@@ -42,7 +42,8 @@ set termwinsize=8x0
 set splitbelow
 
 "Plugin----------------------------------------------------------------------
-"vim-plug外掛管理
+"Change plug-in manager from vundle to vim-plug
+"vim-plug 外掛管理
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -53,7 +54,7 @@ filetype off                "required!關閉檔案類型外掛
 
 call plug#begin('~/.vim/bundle')
 
-"安裝Plug
+"安裝Plug-in
 "emmet-vim
 Plug 'mattn/emmet-vim'
 let g:user_emmet_expandabbr_key = ',,'
