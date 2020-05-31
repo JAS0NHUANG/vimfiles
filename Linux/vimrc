@@ -1,0 +1,141 @@
+"感謝Steve Losh 大大這篇文章 (http://stevelosh.com/blog/2010/09/coming-home-to-vim/)讓我多了解了一些vimrc。
+
+"環境設定
+set nocompatible            "be iMproved 取消與vi相容 nocp
+set scrolloff=3             "讓畫面上/下方永遠保有x行 so
+set autoindent              "自動縮排 ai
+set wildmenu                "更強的自動補齊功能 wm
+set backspace=indent,eol,start  "消除鍵設定 bs
+set linebreak               "讓vim不會在字間斷句 lbr
+
+"tab設定
+set tabstop=2               "tab縮排數 ts
+set shiftwidth=2            "設定縮排指令(>或<)字元 sw
+set softtabstop=2           "設定tab鍵為x個空白字元 sts
+set expandtab               "以空白字元取代tab字元 et
+
+"設定編碼
+set encoding=utf8           "設定編碼 enc
+set guifont=Consolas:h13    "設定字型 gfn
+set langmenu=zh_TW.UTF-8    "設定語言 lm
+language message zh_TW.UTF-8
+set helplang=zh             "hlg
+
+"顯示設定
+set number                  "顯示行號 nu
+syntax on                   "語法反白
+set background=light        "底色(亮/暗) bg
+set t_Co=256                "設定顏色為256色
+colorscheme munkeeGriin     "設定色彩配置 colo
+set termguicolors           "顯示 full colors
+
+filetype plugin indent on
+
+"Folding
+set foldenable
+set foldmethod=indent
+set filetype=html
+set smartindent
+let g:html_indent_inctags = "html,body,head,tbody,div,p,h3"
+
+"terminal setting
+set termwinsize=8x0
+set splitbelow
+
+"Plugin----------------------------------------------------------------------
+"Change plug-in manager from vundle to vim-plug
+"vim-plug 外掛管理
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+filetype off                "required!關閉檔案類型外掛
+
+call plug#begin('~/.vim/bundle')
+
+"安裝Plug-in
+"emmet-vim
+Plug 'mattn/emmet-vim'
+let g:user_emmet_expandabbr_key = ',,'
+
+"NERDTree"
+Plug 'scrooloose/nerdtree'
+
+"airline"
+Plug 'bling/vim-airline'
+
+"fugitive"
+Plug 'tpope/vim-fugitive'
+
+"try coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_node_path = '/usr/bin/node'
+
+"Use <TAB> key to select suggestions
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+
+filetype plugin indent on   "重新開啟檔案類型外掛+設定縮排!
+
+"Always show statusline
+set laststatus=2
+
+" for compiling latex
+Plug 'gerw/vim-latex-suite'
+ set shellslash
+ set grepprg=grep\ -nH\ $*
+ let g:tex_flavor='latex'
+ let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
+ let g:Tex_CompileRule_dvi = 'pdflatex --interaction=nonstopmode $*'
+
+  let g:Tex_CompileRule_ps = 'dvips -Ppdf -o $*.ps $*.dvi'
+  let g:Tex_CompileRule_pdf = 'ps2pdf $*.ps'
+
+"tabular: an align tool
+"(http://vimcasts.org/episodes/aligning-text-with-tabular-vim/)
+Plug 'godlygeek/tabular'
+
+"makedown force
+autocmd BufNew,BufRead *.md set filetype=markdown
+
+"goyo
+Plug 'junegunn/goyo.vim'
+
+"ALE Async Lint Engine
+Plug 'w0rp/ale'
+
+"Indent Guides"
+Plug 'nathanaelkane/vim-indent-guides'
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_auto_colors = 0
+    hi IndentGuidesOdd  guibg=grey   ctermbg=14
+    hi IndentGuidesEven  guibg=grey   ctermbg=14
+
+"Devicons"
+Plug 'ryanoasis/vim-devicons'
+
+"vim-polyglot"
+Plug 'sheerun/vim-polyglot'
+
+"vim-markdown-preview"
+Plug 'JamshedVesuna/vim-markdown-preview'
+let vim_markdown_preview_github=1
+let vim_markdown_preview_use_xdg_open=1
+
+"colorizer"
+Plug 'chrisbra/Colorizer'
+
+"vim-css-color"
+Plug 'ap/vim-css-color'
+
+
+call plug#end()
