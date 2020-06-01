@@ -9,9 +9,9 @@ set backspace=indent,eol,start  "消除鍵設定 bs
 set linebreak               "讓vim不會在字間斷句 lbr
 
 "tab設定
-set tabstop=4               "tab縮排數 ts
-set shiftwidth=4            "設定縮排指令(>或<)字元 sw
-set softtabstop=4           "設定tab鍵為x個空白字元 sts
+set tabstop=2               "tab縮排數 ts
+set shiftwidth=2            "設定縮排指令(>或<)字元 sw
+set softtabstop=2           "設定tab鍵為x個空白字元 sts
 set expandtab               "以空白字元取代tab字元 et
 
 "設定編碼
@@ -27,12 +27,13 @@ syntax on                   "語法反白
 set background=light        "底色(亮/暗) bg
 set t_Co=256                "設定顏色為256色
 colorscheme munkeeGriin     "設定色彩配置 colo
+set termguicolors           "顯示 full colors
 
 filetype plugin indent on
 
 "Folding
 set foldenable
-set foldmethod=indent
+set foldmethod=manual "indent
 set filetype=html
 set smartindent
 let g:html_indent_inctags = "html,body,head,tbody,div,p,h3"
@@ -102,7 +103,7 @@ Plug 'gerw/vim-latex-suite'
 "(http://vimcasts.org/episodes/aligning-text-with-tabular-vim/)
 Plug 'godlygeek/tabular'
 
-"makedown force
+"markedown force
 autocmd BufNew,BufRead *.md set filetype=markdown
 
 "goyo
@@ -113,16 +114,28 @@ Plug 'w0rp/ale'
 
 "Indent Guides"
 Plug 'nathanaelkane/vim-indent-guides'
-    let g:indent_guides_enable_on_vim_startup = 1
-    let g:indent_guides_guide_size = 1
-    let g:indent_guides_auto_colors = 0
-    hi IndentGuidesOdd  guibg=grey   ctermbg=14
-    hi IndentGuidesEven  guibg=grey   ctermbg=14
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_guide_size = 1
+  let g:indent_guides_auto_colors = 0
+  hi IndentGuidesOdd  guibg=grey   ctermbg=14
+  hi IndentGuidesEven  guibg=grey   ctermbg=14
 
 "Devicons"
 Plug 'ryanoasis/vim-devicons'
 
 "vim-polyglot"
 Plug 'sheerun/vim-polyglot'
+
+"markdown preview nvim
+Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & npm install'}
+
+"colorizer"
+Plug 'chrisbra/Colorizer'
+
+"vim-css-color"
+Plug 'ap/vim-css-color'
+
+"limelight
+Plug 'junegunn/limelight.vim'
 
 call plug#end()

@@ -30,7 +30,7 @@ hi NonText      guifg=#3a3a3a   ctermfg=237
 "特殊字元
 hi SpecialKey   guifg=#00ffaf   ctermfg=49
 "標題
-hi Title        guifg=#00ff00   ctermfg=46 
+hi Title        guifg=#11ff33   ctermfg=46 
 "選擇模式配色
 hi Visual       gui=reverse     cterm=reverse
 
@@ -38,7 +38,7 @@ hi Visual       gui=reverse     cterm=reverse
 "註解
 hi Comment      guifg=#0087ff   ctermfg=33
 "常數/常量
-hi Constant     guifg=#afd7af   ctermfg=151
+hi Constant     guifg=#dfdf00   ctermfg=151
 "聲明?!
 hi Statement    guifg=#afffff   ctermfg=159
 "加底線/html連結
