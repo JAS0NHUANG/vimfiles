@@ -137,5 +137,5 @@ Plug 'chrisbra/Colorizer'
 "vim-css-color"
 Plug 'ap/vim-css-color'
 
-
+"fzf. fuzzy finder"
 call plug#end()
