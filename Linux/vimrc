@@ -9,10 +9,10 @@ set backspace=indent,eol,start  "消除鍵設定 bs
 set linebreak               "讓vim不會在字間斷句 lbr
 
 "tab設定
-set tabstop=2               "tab縮排數 ts
-set shiftwidth=2            "設定縮排指令(>或<)字元 sw
-set softtabstop=2           "設定tab鍵為x個空白字元 sts
-set expandtab               "以空白字元取代tab字元 et
+set tabstop=4               "tab縮排數 ts
+set shiftwidth=4            "設定縮排指令(>或<)字元 sw
+"set softtabstop=2           "設定tab鍵為x個空白字元 sts
+"set expandtab               "以空白字元取代tab字元 et
 
 "設定編碼
 set encoding=utf8           "設定編碼 enc
