@@ -1,7 +1,20 @@
+"indentation
 set autoindent
 set smartindent
+
+"tab
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
+
+"norm
+set nu
+set colorcolumn=81
+
+"color
+highlight ExtraWhitespace ctermbg=cyan guibg=cyan
+highlight colorcolumn ctermbg=cyan guibg=cyan
+match ExtraWhitespace /\s\+$/
+
 set splitbelow
 syntax on
