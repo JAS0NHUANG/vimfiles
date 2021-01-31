@@ -4,6 +4,7 @@ set smartindent
 
 "tab
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 
@@ -14,7 +15,11 @@ set colorcolumn=81
 "color
 highlight ExtraWhitespace ctermbg=cyan guibg=cyan
 highlight colorcolumn ctermbg=cyan guibg=cyan
+highlight StatusLine ctermfg=237 ctermbg=180 cterm=NONE
+highlight StatusLineNC ctermfg=180 ctermbg=237 cterm=NONE
+highlight CursorLine ctermfg=237 ctermbg=180 cterm=NONE
 match ExtraWhitespace /\s\+$/
 
+set cursorline
 set splitbelow
 syntax on
